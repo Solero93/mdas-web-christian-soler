@@ -1,13 +1,31 @@
 <html>
 
 <head>
-  <title>Express</title>
-  <link rel="stylesheet" href="/stylesheets/style.css">
+    <title>DDD PokeApi</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 </head>
 
 <body>
-  <h1>Express</h1>
-  <p>Welcome to Express</p>
+<h1>DDD PokeApi</h1>
+<p>All results will be shown as an alert</p>
+
+<h2>Get all types of a Pokemon given its ID</h2>
+<label>ID: <input id="pokemonIdInput" type="text"></label>
+<button onclick="
+  let pokemonId = $('input#pokemonIdInput').val();
+  if (pokemonId) {
+    $.ajax('http://localhost:8080/pokemon-type?id=' + pokemonId, {
+      crossDomain: true,
+      type: 'GET',
+      dataType: 'json',
+      success: alert,
+      error: alert
+    })
+  }
+  ">SEND
+</button>
+
 </body>
 
 </html>
