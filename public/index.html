@@ -24,6 +24,26 @@
   ">SEND
 </button>
 
+<h2>Add Favourite pokemon to user by id</h2>
+<label>USER_ID: <input id="userIdInput" type="text"></label>
+<label>POKEMON_IDS (e.g. 1,2,3,4): <input id="pokemonIdListInput" type="text"></label>
+<button onclick="
+  let userId = $('input#userIdInput').val();
+  let pokemonIdListInput = $('input#pokemonIdListInput').val();
+  if (!userId || !pokemonIdListInput) {
+      return;
+  }
+  let pokemonIdList = pokemonIdListInput.split(',');
+  if (pokemonIdList) {
+    $.ajax(`http://localhost:8080/add-favourite-pokemon?userId=${userId}&pokemonIds=${pokemonIdList}`, {
+      type: 'POST',
+      success: alert,
+      error: alert
+    })
+  }
+  ">SEND
+</button>
+
 </body>
 
 </html>
