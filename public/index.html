@@ -16,9 +16,7 @@
   let pokemonId = $('input#pokemonIdInput').val();
   if (pokemonId) {
     $.ajax(`http://localhost:8080/pokemon-type?id=${pokemonId}`, {
-      crossDomain: true,
       type: 'GET',
-      dataType: 'json',
       success: alert,
       error: alert
     })
