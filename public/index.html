@@ -11,14 +11,14 @@
 <p>All results will be shown as an alert</p>
 
 <h2>Get all types of a Pokemon given its ID</h2>
-<label>ID: <input id="pokemonIdInput" type="text"></label>
+<label>ID: <input id="pokemonIdForTypeInput" type="text"></label>
 <button onclick="
-  let pokemonId = $('input#pokemonIdInput').val();
+  let pokemonId = $('input#pokemonIdForTypeInput').val();
   if (pokemonId) {
     $.ajax(`http://localhost:8080/pokemon-type?id=${pokemonId}`, {
       type: 'GET',
-      success: alert,
-      error: alert
+      success: (data) => alert(JSON.stringify(data)),
+      error: (data) => alert(JSON.stringify(data))
     })
   }
   ">SEND
@@ -37,8 +37,22 @@
   if (pokemonIdList) {
     $.ajax(`http://localhost:8080/add-favourite-pokemon?userId=${userId}&pokemonIds=${pokemonIdList}`, {
       type: 'POST',
-      success: alert,
-      error: alert
+      success: () => alert('Added to favourites!'),
+      error: () => alert('Error while adding to favourites')
+    })
+  }
+  ">SEND
+</button>
+
+<h2>Get details of Pokemon</h2>
+<label>ID: <input id="pokemonIdForDetailsInput" type="text"></label>
+<button onclick="
+  let pokemonId = $('input#pokemonIdForDetailsInput').val();
+  if (pokemonId) {
+    $.ajax(`http://localhost:8080/pokemon-details?id=${pokemonId}`, {
+      type: 'GET',
+      success: (data) => alert(JSON.stringify(data)),
+      error: (data) => alert(JSON.stringify(data))
     })
   }
   ">SEND
